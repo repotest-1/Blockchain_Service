@@ -15,24 +15,13 @@ app.include_router(blockchain_router, prefix='/blockchain', tags=['blockchain'])
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",  # React frontend (default)
-        "http://localhost:4002",  # OOS frontend
-        "http://localhost:5000",  # OOS frontend alternative
-        "http://192.168.100.14:5000",  # OOS LAN frontend
-        "http://127.0.0.1:4002",
-        "http://127.0.0.1:5000",
-        "http://127.0.0.1:7000",  # Ordering service
-        "http://localhost:7000",
-        "http://127.0.0.1:7001",  # Delivery service
-        "http://localhost:7001",
-        "http://127.0.0.1:7002",  # Notification service
-        "http://localhost:7002",
-        "http://127.0.0.1:7003",  # Concerns service
-        "http://localhost:7003",
-        "http://127.0.0.1:7004",  # Track Order service
-        "http://localhost:7004",
-        "http://127.0.0.1:7005",  # Payment service
-        "http://localhost:7005",
+        "http://bleu-ims-beta.vercel.app",  # React frontend (default)
+        "http://bleu-ums-zeta.vercel.app",  # OOS frontend
+        "http://bleu-oos-rouge.vercel.app",  # OOS frontend alternative
+        "http://bleu-oos-rouge.vercel.app",  # OOS LAN frontend
+        "http://bleu-ums-zeta.vercel.app",
+        "http://bleu-oos-rouge.vercel.app",
+        
     ],
     allow_credentials=True,
     allow_methods=["*"],
