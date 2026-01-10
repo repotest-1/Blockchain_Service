@@ -15,12 +15,12 @@ app.include_router(blockchain_router, prefix='/blockchain', tags=['blockchain'])
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://bleu-ims-beta.vercel.app",  # React frontend (default)
-        "http://bleu-ums-zeta.vercel.app",  # OOS frontend
-        "http://bleu-oos-rouge.vercel.app",  # OOS frontend alternative
-        "http://bleu-oos-rouge.vercel.app",  # OOS LAN frontend
-        "http://bleu-ums-zeta.vercel.app",
-        "http://bleu-oos-rouge.vercel.app",
+        "https://bleu-ims-beta.vercel.app",  # React frontend (default)
+        "https://bleu-ums-zeta.vercel.app",  # OOS frontend
+        "https://bleu-oos-rouge.vercel.app",  # OOS frontend alternative
+        "https://bleu-oos-rouge.vercel.app",  # OOS LAN frontend
+        "https://bleu-ums-zeta.vercel.app",
+        "https://bleu-oos-rouge.vercel.app",
         
     ],
     allow_credentials=True,
