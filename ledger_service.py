@@ -97,13 +97,22 @@ def mint_report_to_ledger(report_data_json):
         gas_price = w3.eth.gas_price
         logger.info(f"Current gas price: {w3.from_wei(gas_price, 'gwei')} gwei")
         
+        # Estimate gas based on actual payload
+        estimated_gas = ReportLedger.functions.recordReport(
+            report_data_string
+        ).estimate_gas({
+            'from': ADMIN_ACCOUNT.address
+        })
+        
+        logger.info(f"Estimated gas: {estimated_gas}")
+        
         # Build the function call payload
         tx_build = ReportLedger.functions.recordReport(report_data_string).build_transaction({
-            'chainId': w3.eth.chain_id, 
+            'chainId': w3.eth.chain_id,
             'from': ADMIN_ACCOUNT.address,
             'nonce': nonce,
-            'gas': 500000,  # Increased safety limit for larger reports
-            'maxFeePerGas': w3.to_wei('50', 'gwei'),  # Increased for BuildBear
+            'gas': estimated_gas + 50_000,  # safety buffer
+            'maxFeePerGas': w3.to_wei('50', 'gwei'),
             'maxPriorityFeePerGas': w3.to_wei('2', 'gwei')
         })
         
